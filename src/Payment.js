@@ -31,7 +31,6 @@ function Payment() {
             });
             setClientSecret(response.data.clientSecret);
         }
-
         getClientSecret();
     }, [basket]);
 
@@ -41,7 +40,7 @@ function Payment() {
         setProcessing(true);
 
         const payload = await stripe.confirmCardPayment(clientSecret, {
-            payment__method: {
+            payment_method: {
                 card: elements.getElement(CardElement)
             }
         }).then(({ paymentIntent }) => {
